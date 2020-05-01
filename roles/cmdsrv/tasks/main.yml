@@ -165,6 +165,7 @@
             - scripts/constants.sh
             #- scripts/iiab_update_menus.py
             - scripts/install_menu_defs.py
+            - scripts/cp-menu-files.sh
             - scripts/sync_menu_defs.py
 
 - name: Copy and rename templated scripts
