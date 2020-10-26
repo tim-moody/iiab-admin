@@ -165,6 +165,7 @@ iiab_ini = {}
 kiwix_catalog = {}
 oer2go_catalog = {}
 maps_catalog = {} # this has been flattened when read to include both maps and base
+maps_installed_overlays = {}
 is_rpi = False
 
 # vars set by admin-console
@@ -2238,6 +2239,8 @@ def install_sat_area(cmd_info):
 def get_osm_vect_stat(cmd_info):
     global osm_vect_installed
 
+    # ToDo add SAT-EXT and WD-POINTS to wip and installed
+
     all_maps = {}
     all_maps['WIP'] = maps_wip
 
@@ -2851,6 +2854,7 @@ def init():
     read_kiwix_catalog()
     read_oer2go_catalog()
     read_maps_catalog()
+    read_maps_installed_overlays()
 
     # Clean up any failed uploads
     remove_uploaded_files()
@@ -3093,6 +3097,13 @@ def read_maps_catalog():
 #            outfile.write(str_utf8)
 #    except OSError as e:
 #        raise
+
+def read_maps_installed_overlays():
+    global maps_installed_overlays
+    maps_installed_overlays = adm.read_yaml(iiab_config_dir + "/installed-map-overlays.json")
+
+def write_maps_installed_overlays():
+    adm.write_json_file(maps_installed_overlays, iiab_config_dir + "/installed-map-overlays.json")
 
 def get_incomplete_jobs():
     global jobs_requested
