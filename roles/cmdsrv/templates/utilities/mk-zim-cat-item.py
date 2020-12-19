@@ -77,8 +77,8 @@ def main():
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Generate catalog json for a zim file.")
-    parser.add_argument("zim_file", help="The full path to a zim file.")
-    parser.add_argument("--path", help="Full path to zim, default is " + zim_path)
+    parser.add_argument("zim_file", help="The name of the zim file.")
+    parser.add_argument("--path", help="Directory where zim is located, default is " + zim_path)
     parser.add_argument("--source", help="Url prefix for download source, default is " + download_source)
     return parser.parse_args()
 
